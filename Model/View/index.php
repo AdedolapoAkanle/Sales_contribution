@@ -2,6 +2,7 @@
 require("../db.php");
 require("Controller/contributors.php");
 require("Controller/contributions.php");
+require("../View/Controller/functions.php");
 
 $success = "";
 $error = "";
@@ -33,7 +34,8 @@ if (isset($_GET['msg'])) {
     <form action="../backend.php" method="POST">
         <div class="container">
             <div class="main">
-                <div class="center">
+
+                <div class="left">
                     <div class="header">Contributors</div>
                     <?php
                     if ($success)
@@ -66,31 +68,26 @@ if (isset($_GET['msg'])) {
 
                     </div>
                 </div>
-                <?php
-
-                // $info = new Contributors;
-                // $res = $info->contributorInfo();
-
-                // if (!empty($res)) {
-                //     foreach ($res as $row) {
-                //         echo "<table>
-                //             <tr>
-                //             <td>{$row['name']} </td>
-                //             <td>{$row['phone']}</td>
-                //             <td>{$row['email']}</td>
-                //             <td>{$row['address']}</td>
-                //             <td>{$row['gender']}</td>
-                //             <td>{$row['amount']}</td>
-                //             </tr>
-                //             </table>";
-                //     }
-                // }
-
-                ?>
+                <div class="right">
+                    <?php
+                    $gender = new Contributors;
+                    $gender->getContributorsGender("male");
 
 
+                    if (!empty($res)) {
+                        foreach ($res as $row) {
+                            echo "<tr>
+                                    <td>{$row['name']} </td>
+                    
+                                </tr>";
+                        }
+                    }
+                    ?>
+                </div>
 
             </div>
+
+
 
         </div>
     </form>

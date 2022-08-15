@@ -22,11 +22,12 @@ body {
 	width: 50%;
 	box-shadow: 0px 5px 10px #dfd3c3;
 	background-color: #fffbcb;
+	display: flex;
 	/* background: linear-gradient(to top, #f8f398 20%, #e46161 100%); */
 	
 }
 
-.center {
+.left {
 	width: 25%;
 	padding: 30px;
 	padding-right: 80px;
@@ -35,6 +36,18 @@ body {
 	display: flex;
 	flex-direction: column;
 }
+
+.right {
+	font-size: 15px;
+	padding: 30px;
+	color: #734444;
+}
+
+::-webkit-input-placeholder {
+	color: #dfd3c3;
+	font-size: 15px;
+}
+
 
 .header {
 	width: 200px;
@@ -79,6 +92,19 @@ body {
 	border: none;
 	border-bottom: 1px solid #d45d79;
 	padding: 5px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.find {
+	width: 140%;
+	font-size: 15px;
+	color: #876464;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #d45d79;
+	padding: 5px;
+	margin:15px 0;
 	cursor: pointer;
 	text-align: center;
 }

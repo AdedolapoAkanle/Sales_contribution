@@ -28,7 +28,7 @@ class Functions extends Database
         return false;
     }
 
-    public static function dynamicDropdown($name, $table, $label, $title, $condition = "", $value, $class = "")
+    public static function dynamicDropdown($name, $table, $label, $title, $condition = "", $value = "id", $class = "")
     {
 
         global $db;

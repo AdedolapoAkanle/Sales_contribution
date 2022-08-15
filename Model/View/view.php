@@ -34,7 +34,7 @@ if (isset($_GET['msg'])) {
     <form action="../backend.php" method="POST">
         <div class="container">
             <div class="main">
-                <div class="center">
+                <div class="left">
                     <div class="header">Contributions</div>
                     <?php
                     if ($success)
@@ -46,8 +46,8 @@ if (isset($_GET['msg'])) {
                     <input type="date" name="date" class="text-input" /><br>
                     <?php
 
-                    // $db = new Database;
-                    // Functions::dynamicDropdown("contributor", "contributors", "name", "Contributor", "", "contributor_id", "text-input");
+                    $db = new Database;
+                    Functions::dynamicDropdown("contributor_id", "contributors", "name", "Contributor", "", "id", "text-input");
                     ?>
                     <div class="select">
                         <select name="amount" class="dropdown">
@@ -62,32 +62,12 @@ if (isset($_GET['msg'])) {
                         </select><br>
                     </div>
                     <div class="submit-btn">
-                        <input type="submit" name="submit_contribution" value="save" class="submit">
+                        <input type="submit" name="submit_cont" value="save" class="submit">
                     </div>
                 </div>
             </div>
         </div>
     </form>
-
-    <table>
-        <?php
-
-
-        // $info = new Contributions();
-        // $res = $info->contributionInfo();
-
-        // if (!empty($res)) {
-        //     foreach ($res as $row) {
-        //         echo "<tr>
-        //     <td>{$row['date']} </td>
-        // 	<td>{$row['amount']} </td>
-        // 	<td>{$row['payment_method']}</td>
-        //   </tr>";
-        //     }
-        // }
-
-        ?>
-    </table>
 </body>
 
 </html>

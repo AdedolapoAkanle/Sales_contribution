@@ -34,60 +34,27 @@ class Contributors extends Database
         }
     }
 
-    // public function singleContributorInfo($id)
-    // {
-    //     $this->result = $this->contributorInfo("id = '$id'");
-    //     $this->name = $this->result['name'];
-    //     $this->phone = $this->result['phone'];
-    //     $this->email = $this->result['email'];
-    //     $this->address = $this->result['address'];
-    //     $this->gender = $this->result['gender'];
-    //     $this->amount = $this->result['amount'];
-    //     $this->status = $this->result['status'];
-    // }
+    public function singleContributorInfo($id)
+    {
+        $this->result = $this->contributorInfo("id = '$id'");
+        $this->name = $this->result['name'];
+        $this->phone = $this->result['phone'];
+        $this->email = $this->result['email'];
+        $this->address = $this->result['address'];
+        $this->gender = $this->result['gender'];
+        $this->amount = $this->result['amount'];
+        $this->status = $this->result['status'];
+    }
 
-    // public function contributorResult($id)
-    // {
-    //     $this->singleContributorInfo($id);
-    //     return $this->result;
-    // }
-    // public function ContributorName($id)
-    // {
-    //     $this->singleContributorInfo($id);
-    //     return $this->name;
-    // }
+    public function getContributorsGender($condition)
+    {
+        return $this->contributorInfo("gender = '$condition'");
+    }
 
-    // public function ContributorPhone($id)
-    // {
-    //     $this->singleContributorInfo($id);
-    //     return $this->phone;
-    // }
-
-    // public function ContributorEmail($id)
-    // {
-    //     $this->singleContributorInfo($id);
-    //     return $this->email;
-    // }
-
-    // public function contributorAddress($id)
-    // {
-    //     $this->singleContributorInfo($id);
-    //     return $this->address;
-    // }
-
-    // public function ContributorGender($id)
-    // {
-    //     $this->singleContributorInfo($id);
-    //     return $this->gender;
-    // }
-
-    // public function ContributorAmount($id)
-    // {
-    //     $this->singleContributorInfo($id);
-    //     return $this->amount;
-    // }
-
-
+    public function getContributorsAmount($condition)
+    {
+        return $this->contributorInfo("amount = '$condition'");
+    }
 
     public function validateContributor()
     {
@@ -124,8 +91,6 @@ class Contributors extends Database
 
     public function saveContributor()
     {
-        // echo "name = '$this->name', phone = '$this->phone', email = '$this->email', address = '$this->address', gender = '$this->gender', amount = '$this->amount'";
-        // exit;
 
         $this->save($this->table, "name = '$this->name', phone = '$this->phone', email = '$this->email', address = '$this->address', gender = '$this->gender', amount = '$this->amount'");
     }
