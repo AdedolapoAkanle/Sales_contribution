@@ -36,62 +36,67 @@ if (isset($_GET['msg'])) {
             <div class="main">
                 <div class="left">
                     <div class="header">Find Contributors</div>
-                    <label for="gender" class="title">Get By Gender</label>
-                    <select name="gender" class="find">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                    <label for="action" class="title">Action:
+                    </label>
+                    <select name="action" class="find">
+                        <option value="gender">Gender</option>
+                        <option value="amount">Amount</option>
+                        <option value="phone">Phone</option>
+                        <option value="email">Email</option>
                     </select>
+                    <input type="submit" name="fetch" value="fetch" class="fetch">
 
-                    <label for="amount" class="title">Get By Amount</label>
-                    <select name="amount" class="find">
-                        <option value="1000">1000</option>
-                        <option value="5000">5000</option>
-                        <option value="5000">10000</option>
-                    </select>
+                    <?php
+
+                    if (isset($_POST['fetch'])) {
+                        $value = $_POST['action'];
+
+
+                        echo "<label for='search' class='title'>Search:</label>";
+                        $db = new Database;
+                        Functions::dynamicDropdown("contributor_id", "contributors", "$value", "$value", "", "$value", "find", "DISTINCT $value");
+
+                        // $action = new Contributors;
+                        // $res = $action->getContributorsByCategory($value, $_POST['action']);
+
+                        // if (!empty($res)) {
+                        //     foreach ($res as $row) {
+                        //         echo " <tr class>
+                        //         [id => {$row['id']}] => <td>{$row['name']} </td>
+                        //         </tr> <br>";
+                        //     }j
+                    }
+                    ?>
 
                     <div class="submit-btn">
-                        <input type="submit" name="save" value="save" class="submit">
+                        <input type="submit" name="find" value="submit" class="submit">
                     </div>
                 </div>
 
                 <div class="right">
                     <?php
 
-                    $gender = new Contributors;
-                    $res = $gender->getContributorsGender($_POST['gender']);
-                    echo "Contributors In Gender Category <br>";
-                    echo "<br>";
+                    // if (isset($_POST['find'])) {
+                    //     $value = $_POST['action'];
+                    //     $action = new Contributors;
+                    //     $res = $action->getContributorsByCategory($value, $value);
 
 
-                    if (!empty($res)) {
-                        foreach ($res as $row) {
-                            echo " <tr class = 'table'>
-                            [{$row['id']}] => <td>{$row['name']} </td>
-                            </tr> <br>";
-                        }
-                    }
+                    //     if (!empty($res)) {
+                    //         foreach ($res as $row) {
+                    //             echo " <tr class>
+                    //         [id => {$row['id']}] => <td>{$row['name']} </td>
+                    //         </tr> <br>";
+                    //         }
+                    //     }
+                    // }
+
 
                     ?>
-
-                    <?php
-                    $amount = new Contributors;
-                    $rlt = $amount->getContributorsAmount($_POST['amount']);
-                    echo "<br>";
-                    echo "<br>";
-                    echo "Contributors In Amount Category <br>";
-                    echo "<br>";
-
-                    if (!empty($rlt)) {
-                        foreach ($rlt as $row) {
-                            echo " <tr class = 'table'>
-                            [{$row['id']}] => <td>{$row['name']} </td>
-                            </tr> <br>";
-                        }
-                    }
-                    ?>
-
                 </div>
+
             </div>
+        </div>
         </div>
     </form>
 </body>

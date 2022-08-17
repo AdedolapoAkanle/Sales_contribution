@@ -70,18 +70,6 @@ if (isset($_GET['msg'])) {
                 </div>
                 <div class="right">
                     <?php
-                    $gender = new Contributors;
-                    $gender->getContributorsGender("male");
-
-
-                    if (!empty($res)) {
-                        foreach ($res as $row) {
-                            echo "<tr>
-                                    <td>{$row['name']} </td>
-                    
-                                </tr>";
-                        }
-                    }
                     ?>
                 </div>
 

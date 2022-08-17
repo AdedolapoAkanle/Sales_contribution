@@ -46,14 +46,9 @@ class Contributors extends Database
         $this->status = $this->result['status'];
     }
 
-    public function getContributorsGender($condition)
+    public function getContributorsByCategory($name, $condition)
     {
-        return $this->contributorInfo("gender = '$condition'");
-    }
-
-    public function getContributorsAmount($condition)
-    {
-        return $this->contributorInfo("amount = '$condition'");
+        return $this->contributorInfo("$name = '$condition'");
     }
 
     public function validateContributor()

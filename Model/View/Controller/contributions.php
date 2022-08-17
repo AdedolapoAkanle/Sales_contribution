@@ -18,6 +18,7 @@ class Contributions extends Contributors
     }
 
 
+
     public function validateContribution()
     {
         if (Functions::checkEmptyInput([$this->date, $this->amount, $this->payment_method])) {

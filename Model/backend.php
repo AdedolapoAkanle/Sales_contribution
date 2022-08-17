@@ -24,16 +24,3 @@ if ($_POST['submit']) {
     $cont->processContributor($_POST['name'], $_POST['phone'], $_POST['email'], $_POST['address'], $_POST['gender'], $_POST['amount']);
     Functions::redirect("../Model/View/index.php", "success", "Saved successfully!");
 }
-
-// if ($_POST['find_gender']) {
-//     $gender = $_POST['gender'];
-//     $rlt = $cont->getContributorsGender($gender);
-//     if (!empty($rlt)) {
-//         foreach ($rlt as $row) {
-//             echo "<tr>
-//             <td>{$row['name']} </td>
-//             </tr>";
-//         }
-//     }
-    // Functions::redirect("../Model/View/dashboard.php", "", "");
-// }

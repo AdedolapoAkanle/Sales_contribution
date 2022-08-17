@@ -28,11 +28,11 @@ class Functions extends Database
         return false;
     }
 
-    public static function dynamicDropdown($name, $table, $label, $title, $condition = "", $value = "id", $class = "")
+    public static function dynamicDropdown($name, $table, $label, $title, $condition = "", $value = "id", $class = "", $fields = "*")
     {
 
         global $db;
-        $data = $db->lookUp($table, "*", $condition);
+        $data = $db->lookUp($table, $fields, $condition);
 
         echo "<select id = '$name' name = '$name' class='$class'>";
         echo "<option value =''>Select $title</option>";
