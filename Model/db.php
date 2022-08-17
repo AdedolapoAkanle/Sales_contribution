@@ -116,6 +116,7 @@ class Database
 
     public function lookUp($table, $field = "*", $condition = "", $column = "")
     {
+
         $con = !empty($condition) ? " WHERE $condition" : "";
         $this->sql("SELECT $field FROM $table $con");
         $rlt = $this->getResult();

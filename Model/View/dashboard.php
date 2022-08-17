@@ -1,7 +1,7 @@
 <?php
 require("../db.php");
-require("../View/Controller/contributors.php");
-require("../View/Controller/contributions.php");
+require("Controller/contributors.php");
+require("Controller/contributions.php");
 require("Controller/functions.php");
 
 $success = "";
@@ -21,6 +21,8 @@ if (isset($_GET['error'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sales Contribution</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,42 +33,24 @@ if (isset($_GET['msg'])) {
 ?>
 
 <body>
-    <form action="" method="POST">
+    <form action="form-backend.php" method="POST" id="form">
         <div class="container">
             <div class="main">
                 <div class="left">
-                    <div class="header">Find Contributors</div>
+                    <div class="header">Contributors</div>
                     <label for="action" class="title">Action:
                     </label>
-                    <select name="action" class="find">
+                    <select name="action" class="find" id="dropdown">
+                        <option value="" hidden>Select Action</option>
                         <option value="gender">Gender</option>
                         <option value="amount">Amount</option>
                         <option value="phone">Phone</option>
                         <option value="email">Email</option>
                     </select>
-                    <input type="submit" name="fetch" value="fetch" class="fetch">
+                    <div id="dd">
 
-                    <?php
-
-                    if (isset($_POST['fetch'])) {
-                        $value = $_POST['action'];
-
-
-                        echo "<label for='search' class='title'>Search:</label>";
-                        $db = new Database;
-                        Functions::dynamicDropdown("contributor_id", "contributors", "$value", "$value", "", "$value", "find", "DISTINCT $value");
-
-                        // $action = new Contributors;
-                        // $res = $action->getContributorsByCategory($value, $_POST['action']);
-
-                        // if (!empty($res)) {
-                        //     foreach ($res as $row) {
-                        //         echo " <tr class>
-                        //         [id => {$row['id']}] => <td>{$row['name']} </td>
-                        //         </tr> <br>";
-                        //     }j
-                    }
-                    ?>
+                    </div>
+                    <!-- <input type="submit" name="fetch" value="fetch" class="fetch"> -->
 
                     <div class="submit-btn">
                         <input type="submit" name="find" value="submit" class="submit">
@@ -98,7 +82,36 @@ if (isset($_GET['msg'])) {
             </div>
         </div>
         </div>
+        <script>
+        let form = document.querySelector("#form");
+
+        form.addEventListener("change", e => {
+
+            e.preventDefault();
+
+            var postData = $(form).serialize();
+
+            $.ajax({
+                url: 'form-backend.php',
+                data: postData,
+                type: 'post',
+                success: function(data) {
+                    $("#dd").html(data);
+                }
+            });
+        });
+        </script>
     </form>
+
+    <script>
+    // function onchangeEvent(value) {
+    //     let dropdown = document.querySelector(".find");
+    //     document.addEventListener("change", () => {
+    //         let text = dropdown.options[dropdown.selectedIndex].value;
+    //         console.log(text);
+    //     })
+    // }
+    </script>
 </body>
 
 </html>

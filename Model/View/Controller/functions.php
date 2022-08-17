@@ -31,7 +31,7 @@ class Functions extends Database
     public static function dynamicDropdown($name, $table, $label, $title, $condition = "", $value = "id", $class = "", $fields = "*")
     {
 
-        global $db;
+        $db = new Database();
         $data = $db->lookUp($table, $fields, $condition);
 
         echo "<select id = '$name' name = '$name' class='$class'>";
